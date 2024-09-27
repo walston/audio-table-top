@@ -5,42 +5,6 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 ul.players {
   display: flex;
   flex-direction: column;
@@ -50,7 +14,7 @@ ul.players {
 ul.players > li {
   --highlight: #c5c1bf;
   height: 5em;
-  width: 25em;
+  width: 500px;
   color: var(--highlight);
   border: 3px solid var(--highlight);
   border-radius: 14px;
@@ -63,10 +27,8 @@ ul.players > li {
 }
 
 ul.players > li::before {
-  position: absolute;
-  margin-left: -1.25em;
   font-weight: bold;
   font-size: 1.5em;
-  content: "𑁔";
+  content: "⠿";
   line-height: 1;
 }

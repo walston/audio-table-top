@@ -1,7 +1,7 @@
 .filename {
   text-align: left;
   line-height: 1;
-  margin: 1em 0;
+  margin: .33em 0;
   max-width: 20em;
   overflow: hidden;
   text-overflow: ellipsis;
