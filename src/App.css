@@ -40,3 +40,33 @@
 .read-the-docs {
   color: #888;
 }
+
+ul.players {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+ul.players > li {
+  --highlight: #c5c1bf;
+  height: 5em;
+  width: 25em;
+  color: var(--highlight);
+  border: 3px solid var(--highlight);
+  border-radius: 14px;
+  padding: 6px;
+  list-style: "𑁔";
+  cursor: grab;
+  align-items: center;
+  display: flex;
+  gap: 6px;
+}
+
+ul.players > li::before {
+  position: absolute;
+  margin-left: -1.25em;
+  font-weight: bold;
+  font-size: 1.5em;
+  content: "𑁔";
+  line-height: 1;
+}
