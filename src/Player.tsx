@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import "./Player.css";
 
 interface PlayerProps {
@@ -6,10 +6,24 @@ interface PlayerProps {
   onChange: (file: File) => void;
 }
 
+function AudioPlayer({ file }: { file: File }) {
+  const url = useMemo(() => URL.createObjectURL(file), [file]);
+  return (
+    <div>
+      <h5 className="filename">{file.name}</h5>
+      <audio key={url} controls loop>
+        <source src={url} type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  );
+}
+
 export function Player({ file, onChange }: PlayerProps) {
   const uploadRef = useRef<HTMLInputElement>(null);
-  const button = (
+  return (
     <>
+      {file && <AudioPlayer file={file} />}
       <button
         className="upload-button"
         onClick={() => uploadRef.current?.click()}
@@ -26,25 +40,6 @@ export function Player({ file, onChange }: PlayerProps) {
           }
         }}
       />
-    </>
-  );
-
-  if (!file) {
-    return button;
-  }
-
-  console.log("file", file);
-  return (
-    <>
-      <div>
-        <h5 className="filename">{file.name}</h5>
-        <audio controls loop>
-          <source src={URL.createObjectURL(file)} type="audio/mpeg" />
-          Your browser does not support the audio element.
-        </audio>
-      </div>
-
-      {button}
     </>
   );
 }
