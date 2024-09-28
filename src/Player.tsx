@@ -31,6 +31,7 @@ export function Player({ file, onChange }: PlayerProps) {
         Import
       </button>
       <input
+        className="hidden"
         ref={uploadRef}
         type="file"
         accept="audio/*"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Player } from "./Player";
 import "./App.css";
+import { zip, unzip } from "./zip";
 
 function App() {
   const [files, setFiles] = useState<File[]>(new Array(6).fill(null));
@@ -36,6 +37,38 @@ function App() {
           </li>
         ))}
       </ul>
+      <input
+        type="button"
+        value="Download"
+        onClick={(event) => {
+          event.preventDefault();
+
+          const name =
+            prompt("Enter the playlist name", "playlist") ?? "playlist";
+          zip(files, name).then((blob) => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = name + ".zip";
+            a.click();
+            URL.revokeObjectURL(url);
+          });
+        }}
+      />
+      <input
+        type="file"
+        accept=".zip"
+        onChange={async (event) => {
+          const { files } = event.target;
+          if (files && files[0]) {
+            const newFiles = await unzip(files[0]);
+            setFiles(() => {
+              const newFilesLength = newFiles.length;
+              return newFiles.concat(new Array(6 - newFilesLength).fill(null));
+            });
+          }
+        }}
+      />
     </form>
   );
 }

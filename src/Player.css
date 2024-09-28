@@ -7,10 +7,9 @@
   text-overflow: ellipsis;
 }
 
-input[type="file"] {
+.hidden {
   display: none;
   visibility: hidden;
-  color: var(--highlight);
 }
 
 .upload-button {
